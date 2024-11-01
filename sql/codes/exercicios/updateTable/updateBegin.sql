@@ -57,9 +57,9 @@ INSERT INTO matricula(matricula,codcurso,dmatricula) VALUES
 (2,5,'2019-04-06');
 
 INSERT INTO funcionario (codfunc,nomefunc,cidade,uf,coddepto,sexo) VALUES
-(1,'Paulo','Duque de Caxias','RJ',1,'M'),
-(2,'Paula','Rio de Janeiro','RJ',2,'F'),
-(3,'José','Rio de Janeiro','RJ',1,'M');
+(1, 'Paulo', 'Duque de Caxias', 'RJ', 1, 'M'),
+(2, 'Paula', 'Rio de Janeiro', 'RJ', 2, 'F'),
+(3, 'José', 'Rio de Janeiro', 'RJ', 1, 'M');
 
 SELECT * FROM funcionario;
 ----
