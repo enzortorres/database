@@ -57,4 +57,46 @@ SELECT idcliente, dtcompra
 	FROM compras 
 	WHERE EXTRACT (YEAR FROM dtcompra) = 2020;
 
+SELECT * FROM cliente;
 
+-- EX 17
+SELECT nomecliente FROM cliente
+	WHERE nomecliente LIKE 'A%';
+
+-- EX 18
+SELECT nomecliente FROM cliente
+	WHERE nomecliente LIKE '%ana%';
+
+-- EX 19
+SELECT nomecliente, estadocivil, estado FROM cliente
+	WHERE estado = 'Rio de Janeiro' 
+	OR estado = 'São Paulo' 
+	OR estado = 'Espírito Santo' 
+	OR estado = 'Minas Gerais'
+	ORDER BY estado DESC;
+
+-- EX 20
+SELECT nomecliente, 
+	CASE
+        WHEN estadocivil = 'S' THEN 'Solteiro'
+        WHEN estadocivil = 'C' THEN 'Casado'
+		ELSE 'Viúvo'
+    END
+	FROM cliente
+	ORDER BY estadocivil ASC;
+
+-- EX 21
+SELECT p.nomeproduto, m.nomemarca
+	FROM produto AS p, marca AS m
+	WHERE p.idmarca = m.idmarca;
+
+-- EX 22
+SELECT cliente.nomecliente, produto.nomeproduto
+    FROM cliente, produto, compras
+    WHERE cliente.idcliente = compras.idcliente AND compras.idproduto = produto.idproduto;
+
+-- EX 23
+SELECT cliente.nomecliente, cliente.estado, loja.nomeloja, loja.uf, compras.qtd
+    FROM cliente, loja, compras
+    WHERE cliente.idcliente = compras.idcliente AND compras.idloja = loja.idloja AND compras.qtd > 40
+    ORDER BY compras.qtd DESC;
