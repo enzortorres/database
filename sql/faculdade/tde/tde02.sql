@@ -100,3 +100,40 @@ SELECT cliente.nomecliente, cliente.estado, loja.nomeloja, loja.uf, compras.qtd
     FROM cliente, loja, compras
     WHERE cliente.idcliente = compras.idcliente AND compras.idloja = loja.idloja AND compras.qtd > 40
     ORDER BY compras.qtd DESC;
+
+-- EX 24
+SELECT produto.nomeproduto, produto.preco, marca.nomemarca 
+	FROM produto INNER JOIN marca
+	ON produto.idmarca = marca.idmarca;
+
+-- EX 25
+SELECT marca.nomemarca, compras.dtcompra, compras.qtd
+	FROM marca 
+	INNER JOIN produto ON marca.idmarca = produto.idmarca 
+	INNER JOIN compras ON compras.idproduto = produto.idproduto;
+
+-- EX 26
+SELECT marca.nomemarca, compras.dtcompra, compras.qtd
+	FROM compras
+	INNER JOIN cliente ON compras.idcliente = cliente.idcliente
+	INNER JOIN produto ON compras.idproduto = produto.idproduto
+	INNER JOIN marca ON produto.idmarca = marca.idmarca;
+
+-- EX 27
+SELECT cliente.nomecliente, compras.idcompra
+	FROM cliente
+	LEFT JOIN compras ON cliente.idcliente = compras.idcliente;
+
+-- EX 28
+SELECT marca.nomemarca, produto.nomeproduto
+	FROM marca
+	RIGHT JOIN produto ON marca.idmarca = produto.idmarca;
+
+-- EX 29 
+SELECT cliente.nomecliente, marca.nomemarca
+	FROM cliente
+	FULL OUTER JOIN compras ON cliente.idcliente = compras.idcliente
+	FULL OUTER JOIN produto ON compras.idproduto = produto.idproduto
+	FULL OUTER JOIN marca ON produto.idmarca = marca.idmarca;
+
+	
