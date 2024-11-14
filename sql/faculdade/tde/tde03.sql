@@ -1,3 +1,5 @@
+-- TDE 3
+-- INTEGRANTES: Enzo Ribas, Natan Braslavsky, Felipe Rangel, Juliana Komatsu
 -- Questão 01
 CREATE TABLE cliente (
     cod_cliente INTEGER PRIMARY KEY,
