@@ -171,7 +171,7 @@ SELECT nomecliente, COUNT(*) AS qtdcompras
 	HAVING COUNT(*) < 5
 	ORDER BY qtdcompras DESC;
 	
--- EX24 – Recupere o nome do produto mais caro
+-- EX24 – Recupere o nome do produto mais caroo
 SELECT nomeproduto
 	FROM produto
 	WHERE preco = (

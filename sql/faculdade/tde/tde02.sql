@@ -135,5 +135,3 @@ SELECT cliente.nomecliente, marca.nomemarca
 	FULL OUTER JOIN compras ON cliente.idcliente = compras.idcliente
 	FULL OUTER JOIN produto ON compras.idproduto = produto.idproduto
 	FULL OUTER JOIN marca ON produto.idmarca = marca.idmarca;
-
-	
