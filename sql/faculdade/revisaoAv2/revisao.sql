@@ -203,3 +203,63 @@ SELECT nomecliente, nomemarca
 		ON cp.idproduto = pdt.idproduto
 	FULL OUTER JOIN marca AS ma
 		ON pdt.idmarca = ma.idmarca;
+
+--* EX1
+INSERT INTO projeto(codProjeto, nome, totalHoras) VALUES
+	('P38', 'Comércio Eletrônico', 360),
+	('P40', 'Governança', 400),
+	('P52', 'Web Services', 280);
+
+--* EX2
+UPDATE funcionario
+	SET salario = salario * 1.10
+	WHERE codSetor = 'S003';
+
+--* EX3
+SELECT setor.nome FROM setor
+	WHERE localizacao = '3º ANDAR' OR localizacao = '4º ANDAR';
+
+--* EX4
+SELECT nome.funcionario FROM funcionario
+	WHERE salario >= 2000;
+
+--* EX5
+SELECT nome, salario
+	FROM funcionario AS fnc
+	INNER JOIN setor AS str
+		ON fnc.codSetor = str.codSetor
+	WHERE setor.nome = 'Recursos Humanos';
+
+--* EX6
+SELECT fnc.nome, str.nome
+	FROM funcionario AS fnc
+	LEFT JOIN setor AS str
+		ON fnc.codSetor = str.codSetor
+
+--* EX7
+SELECT MAX(salario) FROM funcionario;
+
+--* EX8 
+SELECT projeto.nome FROM projeto AS pjt
+	INNER JOIN trabalha_em AS tb_em
+		ON pjt.codProjeto = tb_em.codProjeto
+	INNER JOIN funcionario AS fnc
+		ON tb_em.codFunc = fnc.codFunc
+	WHERE fnc.nome = 'Priscila Marques';
+
+--* EX9
+SELECT setor.nome, COUNT(*) AS qtdfunc 
+	FROM setor AS str
+	INNER JOIN funcionario AS fnc
+		ON str.codSetor = fnc.codSetor
+	GROUP BY setor.nome
+	ORDER BY qtdfunc DESC;
+	
+--* EX 10
+SELECT str.nome, SUM(fnc.salario) AS somasalario
+	FROM setor AS str
+	INNER JOIN funcionario AS fnc
+		ON fnc.codSetor = str.codSetor
+	GROUP BY str.nome
+	HAVING SUM(fnc.salario) > 50000
+	ORDER BY somasalario DESC;
